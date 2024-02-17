@@ -1,8 +1,8 @@
 const { BasePage } = require('./Base.page');
 
-export class TechnologiesPage extends BasePage{
+export class ProjectsPage extends BasePage{
 
-    get breadCrumbTechnologies() {
+    get breadCrumbProjects() {
         return this.page.locator('[class="breadcrumb-item active"]');
     };
 
@@ -10,16 +10,16 @@ export class TechnologiesPage extends BasePage{
         return this.page.getByRole('link', { name: 'Home' });
     };
 
-    get pageTitleTechnologies() {
+    get pageTitleProjects() {
         return this.page.locator('[class="title topblk__title"]'); 
     };
 
-    async getBreadCrumbTechnologiesText() {
-        return this.breadCrumbTechnologies.textContent();
+    async getBreadCrumbProjectsText() {
+        return this.breadCrumbProjects.textContent();
     }
     
-    async getTechnologiesPageTitleText() {
-        return this.pageTitleTechnologies.textContent();
+    async getProjectsPageTitleText() {
+        return this.pageTitleProjects.textContent();
     }
 
     async returnToHomePage() {

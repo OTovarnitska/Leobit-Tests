@@ -1,5 +1,4 @@
 import { BasePage } from "../Base.page";
-const { expect } = require('@playwright/test');
 
 export class Header extends BasePage{
 
@@ -76,27 +75,27 @@ export class Header extends BasePage{
     }
 
     async clickOnTechnologiesMenu() {
-        await this.technologiesMenu.click();
+        await this.technologiesMenu.dblclick();
     }
 
     async clickOnProjectsMenu() {
-        await this.projectsMenu.click();
+        await this.projectsMenu.dblclick();
     }
 
     async clickOnApproachMenu() {
-        await this.approachMenu.click();
+        await this.approachMenu.dblclick();
     }
 
     async clickOnAboutMenu() {
-        await this.aboutMenu.click();
+        await this.aboutMenu.dblclick();
     }
 
     async clickOnCareerMenu() {
-        await this.careerMenu.click();;
+        await this.careerMenu.dblclick();;
     }
 
     async clickOnBlogMenu() {
-        await this.blogMenu.click();;
+        await this.blogMenu.dblclick();;
     }
 
     async hoverOnServicesMenu() {

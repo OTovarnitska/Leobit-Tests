@@ -5,6 +5,7 @@ import { ServicesPage } from './pagesLeobit/Services.page';
 import { IndustriesPage } from './pagesLeobit/Industries.page';
 import { SolutionsPage } from './pagesLeobit/Solutions.page';
 import { TechnologiesPage } from './pagesLeobit/Technologies.page';
+import { ProjectsPage } from './pagesLeobit/Projects.page';
 import { ApproachPage } from './pagesLeobit/Approach.page';
 import { AboutPage } from './pagesLeobit/About.page';
 import { CareerPage } from './pagesLeobit/Career.page';

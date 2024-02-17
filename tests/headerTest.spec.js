@@ -7,6 +7,7 @@ test.describe('Basic navigation test', () => {
       const mainHomePageText = await homePage.getMainHomePageText()
       expect (mainHomePageText).toBe('web and .net software development');
     });
+
     test('Should expand Service menu, navigate to Service page and back to Home page', async ({page, header, servicesPage}) => {
         await header.hoverOnServicesMenu();        
         await header.clickOnServicesMenu();
@@ -16,7 +17,6 @@ test.describe('Basic navigation test', () => {
         expect (await servicesPage.getBreadCrumbServicesText()).toBe('Services');
         await servicesPage.returnToHomePage();
         await expect(page).toHaveURL('./')
-
     });
 
     test('Should expand Expertise menu and navigate to Expertise page', async ({page, header}) => {
@@ -36,37 +36,73 @@ test.describe('Basic navigation test', () => {
         await expect(page).toHaveURL('./')
     });
 
-    test('Should navigate to Solutions page and back to Home page', async ({page, header, solutionsPage}) => {
+    test('Should navigate to Solutions page and back to Home page', async ({page, header, solutionsPage }) => {
         await header.hoverOnExpertiseMenu();
         await header.clickOnSolutionsLink()
         await expect(page).toHaveURL('./solution/');
-        expect (await solutionsPage.getSolutionsPageTitleText()).toContain('SOLUTIONS');
+        expect (await solutionsPage.getSolutionsPageTitleText()).toBe('  SOLUTIONS');
         expect (await solutionsPage.getBreadCrumbSolutionsText()).toBe('Solution');
         await solutionsPage.returnToHomePage();
         await expect(page).toHaveURL('./')
     });
 
-    test('Should expand Technologies menu', async ({header}) => {
+    test('Should navigate to Technologies page and back to Home page', async ({page, header, technologiesPage}) => {
         await header.hoverOnTechnologiesMenu();
-    
-        await header.clickOnTechnologiesMenu();
-    
+        await header.clickOnTechnologiesMenu()
+        await expect(page).toHaveURL('./technologies/');
+        expect (await technologiesPage.getTechnologiesPageTitleText()).toBe('Technologies');
+        expect (await technologiesPage.getBreadCrumbTechnologiesText()).toBe('Technologies');
+        await technologiesPage.returnToHomePage();
+        await expect(page).toHaveURL('./')
     });
 
-    test('Should expand Approach menu', async ({header}) => {
+    test('Should navigate to Approach page and back to Home page', async ({page, header, approachPage}) => {
         await header.hoverOnApproachMenu();
-
-        await header.clickOnApproachMenu();
-    
+        await header.clickOnApproachMenu()
+        await expect(page).toHaveURL('./approach/');
+        expect (await approachPage.getApproachPageTitleText()).toBe('Approach');
+        expect (await approachPage.getBreadCrumbApproachText()).toBe('Approach');
+        await approachPage.returnToHomePage();
+        await expect(page).toHaveURL('./')
     });
 
-    test('Should expand About menu', async ({header}) => {
+    test('Should navigate to About page and back to Home page', async ({page, header, aboutPage}) => {
         await header.hoverOnAboutMenu();
-
         await header.clickOnAboutMenu();
-
+        await expect(page).toHaveURL('./about/');
+        expect (await aboutPage.getAboutPageTitleText()).toBe(' ABOUT LEOBIT');
+        expect (await aboutPage.getBreadCrumbAboutText()).toBe('About');
+        await aboutPage.returnToHomePage();
+        await expect(page).toHaveURL('./')
     });
 
+    test('Should navigate to Projects page and back to Home page', async ({page, header, projectsPage}) => {
+        await header.clickOnProjectsMenu();
+        await expect(page).toHaveURL('./projects/');
+        expect (await projectsPage.getProjectsPageTitleText()).toBe('Our Projects');
+        expect (await projectsPage.getBreadCrumbProjectsText()).toBe('Projects');
+        await projectsPage.returnToHomePage();
+        await expect(page).toHaveURL('./')
+    });
+
+    test('Should navigate to Career page and back to Home page', async ({page, header, careerPage}) => {
+        await header.clickOnCareerMenu();
+        await expect(page).toHaveURL('./career/');
+        expect (await careerPage.getCareerPageTitleText()).toBe('WELCOME TOLEOBIT');
+        expect (await careerPage.getBreadCrumbCareerText()).toBe('Career');
+        expect (await careerPage.getBreadCrumbCareerWelcomeText()).toBe('Welcome to Leobit');
+        await careerPage.returnToHomePage();
+        await expect(page).toHaveURL('./')
+    });
+
+    test('Should navigate to Blog page and back to Home page', async ({page, header, blogPage}) => {
+        await header.clickOnBlogMenu();
+        await expect(page).toHaveURL('./blog/');
+        expect (await blogPage.getBlogPageTitleText()).toBe('Blog');
+        expect (await blogPage.getBreadCrumbBlogText()).toBe('Blog');
+        await blogPage.returnToHomePage();
+        await expect(page).toHaveURL('./')
+    });
 });
 
 
