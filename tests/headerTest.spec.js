@@ -1,11 +1,10 @@
-const { expect } = require('@playwright/test');
-const { test } = require('../fixture');
+import { expect } from '@playwright/test';
+import { test } from '../fixture';
 
 test.describe('Basic navigation test', () => {
     test.beforeEach('Navigate to Home page', async ({ page, homePage }) => {
       await page.goto('/');
-      const mainHomePageText = await homePage.getMainHomePageText()
-      expect (mainHomePageText).toBe('web and .net software development');
+      expect (await homePage.getMainHomePageText()).toBe('web and .net software development');
     });
 
     test('Should expand Service menu, navigate to Service page and back to Home page', async ({page, header, servicesPage}) => {

@@ -50,6 +50,10 @@ export class Header extends BasePage{
         return this.page.getByRole('link', { name: 'Blog' }).first();;
     }
 
+    get contactUsButton() {
+        return this.page.getByRole('link', { name: 'Contact us' })
+    }
+
     get expandedMenu() {
         return this.page.locator('[aria-expanded]');
     }
@@ -96,6 +100,10 @@ export class Header extends BasePage{
 
     async clickOnBlogMenu() {
         await this.blogMenu.dblclick();;
+    }
+
+    async clickOnContactUsButton() {
+        await this.contactUsButton.click();
     }
 
     async hoverOnServicesMenu() {
