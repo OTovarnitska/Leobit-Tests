@@ -14,6 +14,14 @@ export class SolutionsPage extends BasePage{
         return this.page.locator('.hero-header'); 
     };
 
+    get getFreeQuateButton() {
+        return this.page.locator('[onclick="location.href=\'#footer\'"]');
+    };
+
+    async clickOngetFreeQuate() {
+        await this.getFreeQuateButton.click();
+    }
+
     async getBreadCrumbSolutionsText() {
         return this.breadCrumbSolutions.textContent();
     }

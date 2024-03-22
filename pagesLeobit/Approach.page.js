@@ -14,6 +14,14 @@ export class ApproachPage extends BasePage{
         return this.page.locator('.hero-header'); 
     };
 
+    get getAConsultationButton() {
+        return this.page.locator('[onclick="location.href=\'#footer\'"]') 
+    };
+
+    async clickOngetAConsultation() {
+        await this.getAConsultationButton.click();
+    }
+
     async getBreadCrumbApproachText() {
         return this.breadCrumbApproach.textContent();
     }

@@ -14,6 +14,15 @@ export class BlogPage extends BasePage{
         return this.page.locator('.head__title'); 
     };
 
+    
+    get contactUsButton() {
+        return this.page.locator('.side-button');
+    };
+
+    async clickOnContactUs() {
+        await this.contactUsButton.click();
+    }
+
     async getBreadCrumbBlogText() {
         return this.breadCrumbBlog.textContent();
     };

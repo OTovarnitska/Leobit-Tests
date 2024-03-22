@@ -11,6 +11,10 @@ export class HomePage extends BasePage {
         return this.page.getByRole('link', { name: 'free consultation' })
     }
 
+    get getExpertsConsultButton() {
+        return this.page.locator('[data-type="top-banner-button"]')  
+    }
+
     async getMainHomePageText() {
         return this.mainHomePageText.textContent();
     }

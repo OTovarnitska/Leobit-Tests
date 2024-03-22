@@ -14,6 +14,14 @@ export class ProjectsPage extends BasePage{
         return this.page.locator('[class="title topblk__title"]'); 
     };
 
+    get requestProjectEstButton() {
+        return this.page.locator('[data-type="top-banner-button"]')  
+    };
+
+    async clickOnrequestProjectEstButton() {
+        await this.requestProjectEstButton.click();
+    }
+
     async getBreadCrumbProjectsText() {
         return this.breadCrumbProjects.textContent();
     }

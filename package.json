@@ -6,13 +6,17 @@
   "scripts": {
     "test": "npx playwright test",
     "test-ui": "npx playwright test --ui",
-    "lint": "npx eslint . --color --fix --quiet"
+    "lint": "npx eslint . --color --fix --quiet",
+    "test:reporter": "playwright test --headed --reporter=allure-playwright",
+    "allure-report": "npx allure generate ./allure-results && allure open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.40.1",
+    "@playwright/test": "^1.42.1",
+    "allure-commandline": "^2.27.0",
+    "allure-playwright": "^2.14.0",
     "eslint": "^8.48.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.28.1",

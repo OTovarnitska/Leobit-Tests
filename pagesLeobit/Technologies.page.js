@@ -14,6 +14,18 @@ export class TechnologiesPage extends BasePage{
         return this.page.locator('[class="title topblk__title"]'); 
     };
 
+    get getExpertsConsultButton() {
+        return this.page.locator('[data-type="top-banner-button"]')  
+    };
+
+    async clickOnGetExpertConsult() {
+        await this.getExpertsConsultButton.click();
+    }
+
+    async getMainHomePageText() {
+        return this.mainHomePageText.textContent();
+    }
+
     async getBreadCrumbTechnologiesText() {
         return this.breadCrumbTechnologies.textContent();
     }

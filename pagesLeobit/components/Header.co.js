@@ -19,7 +19,7 @@ export class Header extends BasePage{
     }
     
     get solutionsLink() {
-        return this.page.locator('a[href="https://leobit.com/solution/"]').first()
+        return this.page.locator('a[href="https://staging.leobit.com/solution/"]').first()
     }
 
     get expertiseMenu() {
@@ -53,14 +53,6 @@ export class Header extends BasePage{
     get contactUsButton() {
         return this.page.getByRole('link', { name: 'Contact us' })
     }
-
-    get expandedMenu() {
-        return this.page.locator('[aria-expanded]');
-    }
-    
-    /*async waitForMenuExpands() {
-        await this.waitForSelector(expandedMenu)
-    }*/
 
     async clickOnServicesMenu() {
         await this.servicesMenu.dblclick();

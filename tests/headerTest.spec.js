@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { test } from '../fixture';
+import { test } fallure serverom '../fixture';
 
 test.describe('Basic navigation test', () => {
     test.beforeEach('Navigate to Home page', async ({ page, homePage }) => {
@@ -8,9 +8,9 @@ test.describe('Basic navigation test', () => {
     });
 
     test('Should expand Service menu, navigate to Service page and back to Home page', async ({page, header, servicesPage}) => {
-        await header.hoverOnServicesMenu();        
+        await header.hoverOnServicesMenu();   
+        expect(await header.servicesMenu).toHaveAttribute("aria-expanded", "true");
         await header.clickOnServicesMenu();
-        //expect (await header.servicesMenu.getAttribute('aria-expanded')).toBe('true');
         await expect(page).toHaveURL('./services/');
         expect (await servicesPage.getServicesPageTitleText()).toBe('Services');
         expect (await servicesPage.getBreadCrumbServicesText()).toBe('Services');
@@ -20,14 +20,15 @@ test.describe('Basic navigation test', () => {
 
     test('Should expand Expertise menu and navigate to Expertise page', async ({page, header}) => {
         await header.hoverOnExpertiseMenu();
-        //expect (await header.ExpertiseMenu.getAttribute('aria-expanded')).toBe('true');
+        expect(await header.expertiseMenu).toHaveAttribute("aria-expanded", "true");
         await header.clickOnExpertiseMenu();
         await expect(page).toHaveURL('./#');
     });
 
     test('Should navigate to Industries page and back to Home page', async ({page, header, industriesPage}) => {
         await header.hoverOnExpertiseMenu();
-        await header.clickOnIndustriesLink()
+        expect(await header.expertiseMenu).toHaveAttribute("aria-expanded", "true")
+        await header.clickOnIndustriesLink();
         await expect(page).toHaveURL('./industries/');
         expect (await industriesPage.getIndustriesPageTitleText()).toBe('INDUSTRIES');
         expect (await industriesPage.getBreadCrumbIndustriesText()).toBe('Industries');
@@ -37,7 +38,8 @@ test.describe('Basic navigation test', () => {
 
     test('Should navigate to Solutions page and back to Home page', async ({page, header, solutionsPage }) => {
         await header.hoverOnExpertiseMenu();
-        await header.clickOnSolutionsLink()
+        expect(await header.expertiseMenu).toHaveAttribute("aria-expanded", "true");
+        await header.clickOnSolutionsLink();
         await expect(page).toHaveURL('./solution/');
         expect (await solutionsPage.getSolutionsPageTitleText()).toBe('  SOLUTIONS');
         expect (await solutionsPage.getBreadCrumbSolutionsText()).toBe('Solution');
@@ -47,6 +49,7 @@ test.describe('Basic navigation test', () => {
 
     test('Should navigate to Technologies page and back to Home page', async ({page, header, technologiesPage}) => {
         await header.hoverOnTechnologiesMenu();
+        expect(await header.technologiesMenu).toHaveAttribute("aria-expanded", "true")
         await header.clickOnTechnologiesMenu()
         await expect(page).toHaveURL('./technologies/');
         expect (await technologiesPage.getTechnologiesPageTitleText()).toBe('Technologies');
@@ -57,7 +60,8 @@ test.describe('Basic navigation test', () => {
 
     test('Should navigate to Approach page and back to Home page', async ({page, header, approachPage}) => {
         await header.hoverOnApproachMenu();
-        await header.clickOnApproachMenu()
+        await expect(header.approachMenu).toHaveAttribute("aria-expanded", "true");
+        await header.clickOnApproachMenu();
         await expect(page).toHaveURL('./approach/');
         expect (await approachPage.getApproachPageTitleText()).toBe('Approach');
         expect (await approachPage.getBreadCrumbApproachText()).toBe('Approach');
@@ -67,6 +71,7 @@ test.describe('Basic navigation test', () => {
 
     test('Should navigate to About page and back to Home page', async ({page, header, aboutPage}) => {
         await header.hoverOnAboutMenu();
+        await expect (header.aboutMenu).toHaveAttribute("aria-expanded", "true");
         await header.clickOnAboutMenu();
         await expect(page).toHaveURL('./about/');
         expect (await aboutPage.getAboutPageTitleText()).toBe(' ABOUT LEOBIT');

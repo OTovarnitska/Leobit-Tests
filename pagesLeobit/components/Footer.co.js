@@ -3,7 +3,7 @@ import { BasePage } from "../Base.page";
 export class Footer extends BasePage {
 
     get footer()
-        { return this.page.locator('.footer'); 
+        { return this.page.locator('.footer').first(); 
     };
     
     get fullName()
@@ -49,18 +49,41 @@ export class Footer extends BasePage {
     get addFileButton()
         { return this.page.locator('label').filter({ hasText: 'add file' }).first()
     }
+    get addFileLabel()
+        { return this.page.locator('.footer-add-file').first()
+    }
 
     get fileUploadedLabel()
-        { return this.page.locator('.filename').first()
+        { return this.page.locator('span.filename[data-default="add file"]').first()
     };
 
     get successSentText()
-        { return this.page.locator('.footer-form-success').first()
+        { return this.page.locator('.footer-form-success')
     };
 
     get submitRequestButton()
         { return this.page.locator('input.button.send-request[type="submit"]')
     }; 
+
+    get cubeLoader()
+        { return this.page.locator('.cube-loader').first()
+    }; 
+
+    get invalidFile()
+        { return this.page.locator('.alert-danger').first()
+    }; 
+
+    get fieldRequired()
+        { return this.page.locator('.requiredError').first()
+    };
+
+    async waitForCubeDisplayed () {
+        await this.waitForSelector
+    }
+
+    async waitForCubeGone () {
+        await this.waitForSelector(cubeLoader, { visible: false })
+    }
 
     async fillInCustomerData (fullName, companyName, businessEmail, briefDescription) {
         await this.fullName.fill(fullName);
@@ -69,8 +92,20 @@ export class Footer extends BasePage {
         await this.briefDescription.fill(briefDescription);
     };
 
+    async getFieldValidInfo() {
+        return this.fieldRequired.textContent();
+    }
+
     async getFileUploaded() {
         return this.fileUploadedLabel.textContent();
     }
 
+    async invalidFileText() {
+        return this.invalidFile.textContent();
+    }
+
+    async checkCubeStyleDone () {
+        const styleAttributeValue = await this.cubeLoading.getAttribute('style');
+        return styleAttributeValue.includes('display: none;') 
+    };
 }

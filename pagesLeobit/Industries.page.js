@@ -14,6 +14,14 @@ export class IndustriesPage extends BasePage{
         return this.page.locator('[class="title topblk__title"]'); 
     };
 
+    get getExpertsConsultButton() {
+        return this.page.locator('[data-type="top-banner-button"]')  
+    };
+
+    async clickOnGetExpertConsult() {
+        await this.getExpertsConsultButton.click();
+    }
+
     async getBreadCrumbIndustriesText() {
         return this.breadCrumbIndustries.textContent();
     }
@@ -25,4 +33,6 @@ export class IndustriesPage extends BasePage{
     async returnToHomePage() {
         return this.breadCrumbHome.click();
     }
+
+
 }
