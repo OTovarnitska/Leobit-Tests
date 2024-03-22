@@ -1,4 +1,5 @@
 import { BasePage } from "../Base.page";
+import { page } from 'playwright';
 
 export class Footer extends BasePage {
 
@@ -77,14 +78,6 @@ export class Footer extends BasePage {
         { return this.page.locator('.requiredError').first()
     };
 
-    async waitForCubeDisplayed () {
-        await this.waitForSelector
-    }
-
-    async waitForCubeGone () {
-        await this.waitForSelector(cubeLoader, { visible: false })
-    }
-
     async fillInCustomerData (fullName, companyName, businessEmail, briefDescription) {
         await this.fullName.fill(fullName);
         await this.companyName.fill(companyName);
@@ -103,9 +96,4 @@ export class Footer extends BasePage {
     async invalidFileText() {
         return this.invalidFile.textContent();
     }
-
-    async checkCubeStyleDone () {
-        const styleAttributeValue = await this.cubeLoading.getAttribute('style');
-        return styleAttributeValue.includes('display: none;') 
-    };
 }
