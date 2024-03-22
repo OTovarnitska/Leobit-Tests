@@ -103,9 +103,4 @@ export class Footer extends BasePage {
     async invalidFileText() {
         return this.invalidFile.textContent();
     }
-
-    async checkCubeStyleDone () {
-        const styleAttributeValue = await this.cubeLoading.getAttribute('style');
-        return styleAttributeValue.includes('display: none;') 
-    };
 }
